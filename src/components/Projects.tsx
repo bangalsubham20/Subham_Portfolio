@@ -205,7 +205,7 @@ const Projects: React.FC = () => {
       {/* These elements are only used by the desktop animations */}
       {isDesktop && (
         <>
-          <div ref={cursorRef} className="fixed top-0 left-0 w-24 h-24 rounded-full bg-[#FF4D00] pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-white">
+          <div ref={cursorRef} className="fixed top-0 left-0 w-24 h-24 rounded-full bg-[#FF4D00] pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-white opacity-0 scale-0">
             View
           </div>
           <div ref={previewContainerRef} className="fixed inset-0 z-0 pointer-events-none">

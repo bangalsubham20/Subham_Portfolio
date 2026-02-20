@@ -73,11 +73,11 @@ const CustomCursor: React.FC = () => {
         <>
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-3 h-3 bg-red-600 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+                className="fixed top-0 left-0 w-3 h-3 bg-red-600 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"
             />
             <div
                 ref={followerRef}
-                className="fixed top-0 left-0 w-8 h-8 border border-red-600 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-colors duration-300"
+                className="fixed top-0 left-0 w-8 h-8 border border-red-600 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-colors duration-300 opacity-0"
             />
         </>
     );
