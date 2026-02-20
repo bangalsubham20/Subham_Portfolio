@@ -124,11 +124,7 @@ const Projects: React.FC = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
-    if (!isDesktop) {
-      if (previewContainerRef.current) gsap.set(previewContainerRef.current, { autoAlpha: 0 });
-      if (cursorRef.current) gsap.set(cursorRef.current, { scale: 0 });
-      return;
-    }
+    if (!isDesktop) return;
 
     const ctx = gsap.context(() => {
       const projectItems = gsap.utils.toArray('.project-item') as HTMLElement[];
@@ -139,13 +135,23 @@ const Projects: React.FC = () => {
 
       if (!previewContainer || !cursor || !detailsEl) return;
 
-      gsap.set(cursor, { scale: 0 });
+      gsap.set(cursor, { scale: 0, opacity: 0, x: 0, y: 0 });
       gsap.set(previewContainer, { autoAlpha: 0 });
 
       const xTo = gsap.quickTo(cursor, "x", { duration: 0.5, ease: "power3" });
       const yTo = gsap.quickTo(cursor, "y", { duration: 0.5, ease: "power3" });
 
+      let isCursorVisible = false;
       const handleMouseMove = (e: MouseEvent) => {
+        if (!isCursorVisible) {
+          gsap.set(cursor, {
+            display: 'block',
+            opacity: 1,
+            left: 0,
+            top: 0
+          });
+          isCursorVisible = true;
+        }
         xTo(e.clientX);
         yTo(e.clientY);
       };
@@ -169,7 +175,7 @@ const Projects: React.FC = () => {
         item.addEventListener('mouseenter', () => {
           setActiveProject(projectData || null);
           document.addEventListener('mousemove', handleMouseMove);
-          gsap.to(cursor, { scale: 1, duration: 0.3, ease: 'expo.out' });
+          gsap.to(cursor, { scale: 1, autoAlpha: 1, duration: 0.3, ease: 'expo.out' });
           gsap.to(previewContainer, { autoAlpha: 1, duration: 0.4, ease: 'expo.out' });
           if (previewImage && projectData) previewImage.src = projectData.preview || '';
           if (textMask) gsap.to(textMask, { color: 'transparent', duration: 0.4, ease: 'expo.out' });
@@ -180,7 +186,7 @@ const Projects: React.FC = () => {
         item.addEventListener('mouseleave', () => {
           setActiveProject(null);
           document.removeEventListener('mousemove', handleMouseMove);
-          gsap.to(cursor, { scale: 0, duration: 0.3, ease: 'expo.out' });
+          gsap.to(cursor, { scale: 0, autoAlpha: 0, duration: 0.3, ease: 'expo.out' });
           gsap.to(previewContainer, { autoAlpha: 0, duration: 0.4, ease: 'expo.out' });
           if (textMask) gsap.to(textMask, { color: '#bdbbbb', duration: 0.4, ease: 'expo.out' });
           gsap.to(otherItems, { opacity: 1, duration: 0.4, ease: 'expo.out' });
@@ -205,7 +211,9 @@ const Projects: React.FC = () => {
       {/* These elements are only used by the desktop animations */}
       {isDesktop && (
         <>
-          <div ref={cursorRef} className="fixed top-0 left-0 w-24 h-24 rounded-full bg-[#FF4D00] pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-white opacity-0 scale-0">
+          <div ref={cursorRef}
+            style={{ left: '-100px', top: '-100px', display: 'none', opacity: 0 }}
+            className="fixed w-24 h-24 rounded-full bg-[#FF4D00] pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-white">
             View
           </div>
           <div ref={previewContainerRef} className="fixed inset-0 z-0 pointer-events-none">

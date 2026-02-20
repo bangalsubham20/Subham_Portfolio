@@ -102,14 +102,17 @@ const Navigation: React.FC = () => {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                        <button
-                            onClick={downloadResume}
-                            className="hidden md:flex items-center space-x-2 px-4 py-2 text-sm font-light tracking-wide border border-gray-300 dark:border-gray-700 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 transition-all duration-300"
+                        <a
+                            href="/previews/Subham_Bangal_Resume_Devops.pdf"
+                            download
+                            data-magnetic
+                            data-cursor-text="CV"
+                            className="hidden md:flex items-center space-x-2 px-4 py-2 text-sm font-light tracking-wide border border-gray-300 dark:border-gray-700 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 rounded-full transition-all duration-300"
                             style={{ cursor: 'none' }}
                         >
                             <FiDownload size={16} />
                             <span>Resume</span>
-                        </button>
+                        </a>
 
                         <button
                             onClick={toggleMute}
