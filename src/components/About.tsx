@@ -149,8 +149,8 @@ const About: React.FC = () => {
                 </span>
 
                 <div className="space-y-8 text-2xl md:text-5xl font-extralight leading-snug md:leading-tight text-gray-900 dark:text-white mix-blend-difference">
-                    <p>I'm a <span className="font-normal text-red-600">Full-Stack Developer</span> who thrives on building seamless digital experiences.</p>
-                    <p>From <span className="font-normal">Spring Boot APIs</span> to <span className="font-normal">React Frontends</span>, I craft performant applications that solve real-world problems.</p>
+                    <p>I'm a <span className="font-normal text-red-600">Backend & DevOps Engineer</span> who thrives on building scalable and robust digital infrastructure.</p>
+                    <p>From <span className="font-normal">Java Spring Boot APIs</span> to <span className="font-normal">Cloud Infrastructures</span>, I craft performant systems that solve complex real-world problems.</p>
                 </div>
 
                 {/* Stats */}
@@ -160,8 +160,8 @@ const About: React.FC = () => {
                         <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Years Experience</div>
                     </div>
                     <div>
-                        <div className="text-4xl md:text-5xl font-light">5+</div>
-                        <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Projects</div>
+                        <div className="text-4xl md:text-5xl font-light">12+</div>
+                        <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Open Projects</div>
                     </div>
                     <div>
                         <div className="text-4xl md:text-5xl font-light">AWS</div>

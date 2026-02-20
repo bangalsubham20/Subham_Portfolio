@@ -9,7 +9,6 @@ const Hero: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
     const subtitleRef = useRef<HTMLDivElement>(null);
-    const descriptionRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     const rolesRef = useRef<HTMLUListElement>(null);
     const headingRef = useRef<HTMLHeadingElement>(null);
@@ -126,7 +125,7 @@ const Hero: React.FC = () => {
 
                         <div ref={subtitleRef} className="mb-6 sm:mb-10 ml-0 sm:ml-5 w-full overflow-hidden max-w-full">
                             <p className="text-sm xs:text-base sm:text-xl md:text-2xl uppercase tracking-wider text-gray-600 dark:text-gray-400 text-center md:text-left w-full max-w-full">
-                                Full-Stack Developer
+                                Backend & DevOps Specialist
                             </p>
                         </div>
 

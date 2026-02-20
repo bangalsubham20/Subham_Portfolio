@@ -36,43 +36,43 @@ const Skills: React.FC = () => {
 
     const skillCategories: SkillCategory[] = [
         {
-            title: 'Frontend',
-            icon: <FiLayers size={28} />,
-            skills: [
-                { name: 'React.js', level: 90 },
-                { name: 'JavaScript', level: 85 },
-                { name: 'Tailwind CSS', level: 80 },
-                { name: 'GSAP / Lenis', level: 70 },
-            ],
-        },
-        {
-            title: 'Backend & DevOps',
+            title: 'Backend Core',
             icon: <FiServer size={28} />,
             skills: [
-                { name: 'Spring Boot / MVC', level: 90 },
-                { name: 'Docker', level: 75 },
-                { name: 'JWT / Spring Security', level: 85 },
-                { name: 'Git & GitHub', level: 90 },
+                { name: 'Java / Spring Boot', level: 95 },
+                { name: 'Node.js / Express', level: 85 },
+                { name: 'RESTful APIs', level: 90 },
+                { name: 'Spring Security (JWT)', level: 88 },
             ],
         },
         {
-            title: 'Databases & Cloud',
-            icon: <FiDatabase size={28} />,
+            title: 'DevOps & Cloud',
+            icon: <FiLayers size={28} />,
             skills: [
-                { name: 'MySQL', level: 85 },
-                { name: 'MongoDB', level: 75 },
-                { name: 'Vercel', level: 80 },
-                { name: 'Heroku', level: 70 },
+                { name: 'Docker & Kubernetes', level: 82 },
+                { name: 'AWS (Certified)', level: 80 },
+                { name: 'CI/CD Pipelines', level: 75 },
+                { name: 'Terraform / IaC', level: 70 },
             ],
         },
         {
-            title: 'Tools & Productivity',
+            title: 'Frontend & UI',
             icon: <FiCode size={28} />,
             skills: [
-                { name: 'Postman / API Testing', level: 85 },
-                { name: 'Figma / Canva / Spline', level: 80 },
-                { name: 'Notion / VS Code/ Intellij', level: 90 },
-                { name: 'AI Tools (Perplexity, Claude, etc.)', level: 85 },
+                { name: 'React.js / Next.js', level: 85 },
+                { name: 'TypeScript', level: 80 },
+                { name: 'Tailwind CSS', level: 90 },
+                { name: 'GSAP Animations', level: 75 },
+            ],
+        },
+        {
+            title: 'Databases & Tools',
+            icon: <FiDatabase size={28} />,
+            skills: [
+                { name: 'PostgreSQL / MySQL', level: 90 },
+                { name: 'MongoDB / Redis', level: 82 },
+                { name: 'Git / GitHub Actions', level: 92 },
+                { name: 'Linux / Shell Scripting', level: 85 },
             ],
         },
     ];
