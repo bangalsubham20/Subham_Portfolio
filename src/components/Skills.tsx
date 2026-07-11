@@ -304,7 +304,7 @@ const Skills: React.FC = () => {
         <section
             ref={sectionRef}
             id="skills"
-            className="relative min-h-screen flex items-center px-2 sm:px-8 py-20 sm:py-32 pb-16 sm:pb-24 max-w-full sm:max-w-full mx-auto text-center overflow-hidden"
+            className="relative min-h-screen flex items-center px-2 sm:px-8 py-20 sm:py-32 pb-16 sm:pb-24 max-w-full sm:max-w-full mx-auto text-center overflow-hidden bg-[#EDEAE4] dark:bg-transparent"
         >
             {/* Swiss Grid Background - Fixed for large screens, square for mobile */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -355,13 +355,13 @@ const Skills: React.FC = () => {
                 <div className="mb-10 sm:mb-20">
                     <h2
                         ref={titleRef}
-                        className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-light tracking-tight mb-4 sm:mb-6 leading-tight text-gray-900 dark:text-white"
+                        className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-light tracking-tight mb-4 sm:mb-6 leading-tight text-[#1a1a1a] dark:text-white"
                     >
                         Weapon of Choice
                     </h2>
                     <p
                         ref={subtitleRef}
-                        className="text-base xs:text-lg font-light text-gray-600 dark:text-gray-400 max-w-xs xs:max-w-2xl mx-auto"
+                        className="text-base xs:text-lg font-light text-[#6B6560] dark:text-gray-400 max-w-xs xs:max-w-2xl mx-auto"
                     >
                         Not just tools — these are the weapons I use to build, break, and create.
                     </p>
@@ -373,16 +373,16 @@ const Skills: React.FC = () => {
                         <div
                             key={catIndex}
                             ref={(el) => { categoryRefs.current[catIndex] = el; }}
-                            className="relative backdrop-blur-xl bg-gray-200 dark:bg-gray-900/30 border border-white/20 dark:border-gray-300/30 rounded-2xl shadow-lg p-4 xs:p-6 sm:p-8 border border-gray-100 dark:border-gray-800 rounded-lg hover:shadow-lg transition-all duration-500 group mx-6 sm:mx-0"
+                            className="relative bg-[#F5F3EF] dark:bg-gray-900/30 border border-[#D6D1C9] dark:border-gray-300/30 rounded-2xl shadow-md hover:shadow-xl p-4 xs:p-6 sm:p-8 rounded-lg transition-all duration-500 group mx-6 sm:mx-0"
                         >
                             <div className="flex items-center mb-4 xs:mb-6">
-                                <div className="p-2 xs:p-3 rounded-full bg-gray-50 dark:bg-red-700 mr-3 xs:mr-4 group-hover:bg-black dark:group-hover:bg-white transition-colors duration-300">
+                                <div className="p-2 xs:p-3 rounded-full bg-[#EDEAE4] dark:bg-red-700 mr-3 xs:mr-4 group-hover:bg-[#1a1a1a] dark:group-hover:bg-white transition-colors duration-300 border border-[#D6D1C9] dark:border-transparent">
                                     {React.cloneElement(category.icon as React.ReactElement<{ className?: string }>, {
                                         className:
-                                            'text-gray-600 dark:text-gray-300 group-hover:text-white dark:group-hover:text-black transition-colors duration-300',
+                                            'text-[#4A4540] dark:text-gray-300 group-hover:text-white dark:group-hover:text-black transition-colors duration-300',
                                     })}
                                 </div>
-                                <h3 className="text-lg xs:text-xl font-light tracking-tight text-gray-900 dark:text-white">
+                                <h3 className="text-lg xs:text-xl font-medium tracking-tight text-[#1a1a1a] dark:text-white">
                                     {category.title}
                                 </h3>
                             </div>
@@ -391,20 +391,20 @@ const Skills: React.FC = () => {
                                 {category.skills.map((skill, skillIndex) => (
                                     <div key={skillIndex}>
                                         <div className="flex justify-between mb-1 xs:mb-2">
-                                            <span className="text-xs xs:text-sm font-light text-gray-700 dark:text-gray-300">
+                                            <span className="text-xs xs:text-sm font-medium text-[#2D2A26] dark:text-gray-300">
                                                 {skill.name}
                                             </span>
-                                            <span className="text-xs font-light text-gray-500 dark:text-gray-400">
+                                            <span className="text-xs font-light text-[#7A7570] dark:text-gray-400">
                                                 {skill.level}%
                                             </span>
                                         </div>
-                                        <div className="w-full h-1 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                                        <div className="w-full h-1.5 bg-[#E0DCD6] dark:bg-gray-800 rounded-full overflow-hidden">
                                             <div
                                                 ref={(el) => {
                                                     const index = catIndex * category.skills.length + skillIndex;
                                                     barRefs.current[index] = el;
                                                 }}
-                                                className="h-full rounded-full bg-gray-900 dark:bg-gray-100 origin-left group-hover:bg-red-600 dark:group-hover:bg-red-600 transition-colors duration-500"
+                                                className="h-full rounded-full bg-[#2D2A26] dark:bg-gray-100 origin-left group-hover:bg-red-600 dark:group-hover:bg-red-600 transition-colors duration-500"
                                                 style={{ width: `${skill.level}%` }}
                                             />
                                         </div>
@@ -441,7 +441,7 @@ const Skills: React.FC = () => {
                                                 loading="lazy"
                                             />
                                         </div>
-                                        <span className="mt-1 xs:mt-2 text-[10px] xs:text-xs sm:text-xs font-light text-gray-500 dark:text-gray-400">
+                                        <span className="mt-1 xs:mt-2 text-[10px] xs:text-xs sm:text-xs font-light text-[#7A7570] dark:text-gray-400">
                                             {logo.name}
                                         </span>
                                     </div>
@@ -476,7 +476,7 @@ const Skills: React.FC = () => {
                                                 loading="lazy"
                                             />
                                         </div>
-                                        <span className="mt-1 xs:mt-2 text-[10px] xs:text-xs sm:text-xs font-light text-gray-500 dark:text-gray-400">
+                                        <span className="mt-1 xs:mt-2 text-[10px] xs:text-xs sm:text-xs font-light text-[#7A7570] dark:text-gray-400">
                                             {logo.name}
                                         </span>
                                     </div>

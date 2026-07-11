@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -122,6 +123,7 @@ const Projects: React.FC = () => {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
 
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const { isDark } = useTheme();
 
   useEffect(() => {
     if (!isDesktop) return;
@@ -188,7 +190,7 @@ const Projects: React.FC = () => {
           document.removeEventListener('mousemove', handleMouseMove);
           gsap.to(cursor, { scale: 0, autoAlpha: 0, duration: 0.3, ease: 'expo.out' });
           gsap.to(previewContainer, { autoAlpha: 0, duration: 0.4, ease: 'expo.out' });
-          if (textMask) gsap.to(textMask, { color: '#bdbbbb', duration: 0.4, ease: 'expo.out' });
+          if (textMask) gsap.to(textMask, { color: isDark ? '#bdbbbb' : '#6B6560', duration: 0.4, ease: 'expo.out' });
           gsap.to(otherItems, { opacity: 1, duration: 0.4, ease: 'expo.out' });
           gsap.to(detailsEl, { opacity: 0, y: 20, duration: 0.5, ease: 'expo.out' });
         });
@@ -197,7 +199,7 @@ const Projects: React.FC = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [isDesktop]);
+  }, [isDesktop, isDark]);
 
   const handleMobileProjectClick = (e: React.MouseEvent<HTMLAnchorElement>, projectNumber: string) => {
     if (!isDesktop) {
@@ -207,7 +209,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="projects" className={`relative md:min-h-screen px-4 sm:px-8 py-20 md:py-32 ${isDesktop ? 'cursor-none' : ''} bg-white dark:bg-black overflow-hidden`}>
+    <section ref={sectionRef} id="projects" className={`relative md:min-h-screen px-4 sm:px-8 py-20 md:py-32 ${isDesktop ? 'cursor-none' : ''} bg-[#F5F3EF] dark:bg-black overflow-hidden`}>
       {/* These elements are only used by the desktop animations */}
       {isDesktop && (
         <>
@@ -218,7 +220,7 @@ const Projects: React.FC = () => {
           </div>
           <div ref={previewContainerRef} className="fixed inset-0 z-0 pointer-events-none">
             <img ref={previewImageRef} src="" alt="" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className={`absolute inset-0 ${isDark ? 'bg-black/50' : 'bg-[#F5F3EF]/70'}`}></div>
           </div>
         </>
       )}
@@ -239,12 +241,12 @@ const Projects: React.FC = () => {
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-item group block border-b border-neutral-600"
+                className="project-item group block border-b border-[#C9C4BC] dark:border-neutral-600"
                 data-project-number={project.number}
                 onClick={(e) => handleMobileProjectClick(e, project.number)}
               >
                 <div className="relative py-6 md:py-8 transition-colors duration-300">
-                  <h3 className="text-4xl md:text-8xl font-bold tracking-tighter text-transparent project-title-stroke" style={{ WebkitTextStroke: '1px gray' }}>
+                  <h3 className="text-4xl md:text-8xl font-bold tracking-tighter text-transparent project-title-stroke" style={{ WebkitTextStroke: isDark ? '1px gray' : '1px #8A8580' }}>
                     {project.title}
                   </h3>
                   <h3 className="text-mask absolute inset-0 py-6 md:py-8 text-4xl md:text-8xl font-bold tracking-tighter text-gray-900 dark:text-white pointer-events-none">
@@ -259,11 +261,11 @@ const Projects: React.FC = () => {
                       <img
                         src={project.preview}
                         alt={`${project.title} preview`}
-                        className="w-full h-auto object-cover rounded-lg mb-4 border border-neutral-700"
+                        className="w-full h-auto object-cover rounded-lg mb-4 border border-[#D6D1C9] dark:border-neutral-700"
                       />
-                      <p className="text-neutral-600 dark:text-neutral-300 mb-4">{project.description}</p>
+                      <p className="text-[#5A5550] dark:text-neutral-300 mb-4">{project.description}</p>
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map(t => <span key={t} className="px-3 py-1 text-xs text-white bg-neutral-800 border border-neutral-700 rounded-full">{t}</span>)}
+                        {project.tech.map(t => <span key={t} className="px-3 py-1 text-xs text-[#2D2A26] bg-[#E5E1D9] border border-[#C9C4BC] dark:text-white dark:bg-neutral-800 dark:border-neutral-700 rounded-full">{t}</span>)}
                       </div>
 
                       <div className="flex justify-center gap-x-8 mt-4">
@@ -283,7 +285,7 @@ const Projects: React.FC = () => {
                             href={project.githubLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-40 inline-flex justify-center items-center gap-2 px-4 py-2 bg-transparent border border-neutral-600 text-neutral-800 dark:text-neutral-300 rounded-md text-sm font-semibold transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+                            className="w-40 inline-flex justify-center items-center gap-2 px-4 py-2 bg-transparent border border-[#B5AFA8] text-[#2D2A26] dark:text-neutral-300 dark:border-neutral-600 rounded-md text-sm font-semibold transition-colors hover:bg-[#E5E1D9] dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
                           >
                             <FaGithub /> GitHub
                           </a>
@@ -302,7 +304,7 @@ const Projects: React.FC = () => {
       {/* Fixed Project Details Panel (Desktop Only) */}
       {isDesktop && activeProject && (
         <div ref={detailsRef} className="fixed bottom-8 right-8 z-30 pointer-events-none max-w-sm">
-          <div className="lg:col-span-4 space-y-6 relative backdrop-blur-md bg-white/80 dark:bg-zinc-900/80 border border-gray-200 dark:border-white/5 rounded-2xl p-6 shadow-xl shadow-black/10">
+          <div className="lg:col-span-4 space-y-6 relative backdrop-blur-md bg-[#F0EDE7]/95 dark:bg-zinc-900/80 border border-[#C9C4BC] dark:border-white/5 rounded-2xl p-6 shadow-xl shadow-black/8">
             <div className="relative z-10">
               <div className="flex items-center space-x-4 mb-2">
                 <h3 className="text-2xl font-light tracking-tight text-gray-900 dark:text-white">

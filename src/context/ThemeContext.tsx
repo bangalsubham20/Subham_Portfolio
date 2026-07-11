@@ -49,7 +49,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       <div className={isDark ? 'dark' : ''}>
-        <div className="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <div className="bg-[#F5F3EF] dark:bg-black text-[#1a1a1a] dark:text-gray-100 transition-colors duration-300">
           {children}
         </div>
       </div>

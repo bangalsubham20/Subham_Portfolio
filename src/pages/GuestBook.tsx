@@ -120,13 +120,13 @@ const GuestBook: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-16">
+    <div className="min-h-screen pt-32 pb-16 bg-[#F5F3EF] dark:bg-transparent">
       <section ref={sectionRef} className="px-8 max-w-7xl mx-auto">
         <div className="mb-16">
           <h1 className="text-4xl md:text-6xl font-light tracking-tight mb-8 text-gray-900 dark:text-white">
             Guest Book
           </h1>
-          <p className="text-lg font-light text-gray-600 dark:text-gray-400 max-w-2xl">
+          <p className="text-lg font-light text-[#5A5550] dark:text-gray-400 max-w-2xl">
             Share your experience working with me. Your feedback helps me grow and helps others understand my work approach.
           </p>
         </div>
@@ -145,7 +145,7 @@ const GuestBook: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-light tracking-wide text-gray-500 dark:text-gray-500 uppercase mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium tracking-wide text-[#7A7570] dark:text-gray-500 uppercase mb-2">
                     Name *
                   </label>
                   <input
@@ -155,12 +155,12 @@ const GuestBook: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                     data-cursor="pointer"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-light tracking-wide text-gray-500 dark:text-gray-500 uppercase mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium tracking-wide text-[#7A7570] dark:text-gray-500 uppercase mb-2">
                     Email *
                   </label>
                   <input
@@ -170,7 +170,7 @@ const GuestBook: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                     data-cursor="pointer"
                   />
                 </div>
@@ -178,7 +178,7 @@ const GuestBook: React.FC = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="company" className="block text-sm font-light tracking-wide text-gray-500 dark:text-gray-500 uppercase mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium tracking-wide text-[#7A7570] dark:text-gray-500 uppercase mb-2">
                     Company
                   </label>
                   <input
@@ -187,12 +187,12 @@ const GuestBook: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                     data-cursor="pointer"
                   />
                 </div>
                 <div>
-                  <label htmlFor="role" className="block text-sm font-light tracking-wide text-gray-500 dark:text-gray-500 uppercase mb-2">
+                  <label htmlFor="role" className="block text-sm font-medium tracking-wide text-[#7A7570] dark:text-gray-500 uppercase mb-2">
                     Role
                   </label>
                   <input
@@ -201,14 +201,14 @@ const GuestBook: React.FC = () => {
                     name="role"
                     value={formData.role}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                     data-cursor="pointer"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="rating" className="block text-sm font-light tracking-wide text-gray-500 dark:text-gray-500 uppercase mb-2">
+                <label htmlFor="rating" className="block text-sm font-medium tracking-wide text-[#7A7570] dark:text-gray-500 uppercase mb-2">
                   Rating *
                 </label>
                 <div className="flex items-center space-x-4">
@@ -220,7 +220,7 @@ const GuestBook: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-light tracking-wide text-gray-500 dark:text-gray-500 uppercase mb-2">
+                <label htmlFor="message" className="block text-sm font-medium tracking-wide text-[#7A7570] dark:text-gray-500 uppercase mb-2">
                   Message *
                 </label>
                 <textarea
@@ -230,7 +230,7 @@ const GuestBook: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none resize-none text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none resize-none text-[#1a1a1a] dark:text-white"
                   placeholder="Share your experience working with me..."
                   data-cursor="pointer"
                 />
@@ -260,11 +260,11 @@ const GuestBook: React.FC = () => {
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial._id || testimonial.date}
-                  className="border border-gray-200 dark:border-gray-800 p-6 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-300"
+                  className="border border-[#C9C4BC] dark:border-gray-800 p-6 bg-[#EDEAE4] dark:bg-transparent hover:border-[#8A8580] dark:hover:border-gray-600 transition-colors duration-300"
                   data-cursor="pointer"
                 >
                   <div className="flex items-start space-x-4 mb-4">
-                    <div className="w-12 h-12 bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#DDD9D3] dark:bg-gray-800 flex items-center justify-center">
                       <FiUser size={20} className="text-gray-700 dark:text-gray-300" />
                     </div>
                     <div className="flex-1">
@@ -279,7 +279,7 @@ const GuestBook: React.FC = () => {
                         </div>
                         {renderStars(testimonial.rating)}
                       </div>
-                      <p className="font-light leading-relaxed text-gray-700 dark:text-gray-300 mb-3">
+                      <p className="font-light leading-relaxed text-[#2D2A26] dark:text-gray-300 mb-3">
                         "{testimonial.message}"
                       </p>
                       <p className="text-xs font-light text-gray-500 dark:text-gray-500">

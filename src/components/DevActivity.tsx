@@ -242,10 +242,10 @@ const DevActivity: React.FC = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="min-h-screen lg:flex lg:items-center px-4 sm:px-6 py-20 sm:py-24 max-w-full mx-auto md:px-32 lg:relative">
+    <section ref={sectionRef} className="min-h-screen lg:flex lg:items-center px-4 sm:px-6 py-20 sm:py-24 max-w-full mx-auto md:px-32 lg:relative bg-[#EDEAE4] dark:bg-transparent">
 
       {/* 1. This is the rotated side-title. It's now absolutely positioned. */}
-      <div ref={headingRef} className="hidden lg:block lg:absolute lg:left-0 lg:top-1/2 lg:mt-[-60px]  text-gray-600 dark:text-gray-400 ">
+      <div ref={headingRef} className="hidden lg:block lg:absolute lg:left-0 lg:top-1/2 lg:mt-[-60px] text-[#9A958F] dark:text-gray-400">
         <h1 className="font-bold pt-0 pb-0 whitespace-nowrap transform lg:-translate-y-1/2 -rotate-90">
           <span className="block lg:text-[5rem] leading-[1] tracking-[-0.04em] sm:tracking-[-0.08em]">GitHub</span>
           <span className="block lg:text-[5rem] leading-[0.95] sm:leading-[1.4] -mt-3 sm:-mt-8  sm:tracking-[-0.08em]">Contributions</span>
@@ -294,7 +294,7 @@ const DevActivity: React.FC = () => {
         <div className="flex flex-col gap-8 mb-12 sm:mb-16 lg:grid lg:grid-cols-3 lg:gap-8 md:max-w-4xl ">
           <div className="lg:col-span-2 space-y-8">
             <div>
-              <h3 className="text-xs sm:text-sm font-light tracking-wider text-gray-500 dark:text-gray-500 uppercase mb-2 sm:mb-4">
+              <h3 className="text-xs sm:text-sm font-medium tracking-wider text-[#7A7570] dark:text-gray-500 uppercase mb-2 sm:mb-4">
                 Language Distribution
               </h3>
               <div ref={languageBarsRef} className="space-y-3 sm:space-y-4">
@@ -306,7 +306,7 @@ const DevActivity: React.FC = () => {
                         {percentage}%
                       </span>
                     </div>
-                    <div className="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-[#DDD9D3] dark:bg-gray-800 rounded-full overflow-hidden">
                       <div
                         className="language-bar h-full rounded-full"
                         style={{
@@ -322,7 +322,7 @@ const DevActivity: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xs sm:text-sm font-light tracking-wider text-gray-500 dark:text-gray-500 uppercase mb-2 sm:mb-4">
+            <h3 className="text-xs sm:text-sm font-medium tracking-wider text-[#7A7570] dark:text-gray-500 uppercase mb-2 sm:mb-4">
               Recent Projects
             </h3>
             <div className="space-y-3 sm:space-y-4">
@@ -390,9 +390,9 @@ const MetricCard: React.FC<{
     }
   }, [value]);
   return (
-    <div className="backdrop-blur-xl bg-gray-200 dark:bg-gray-900/30 border border-white/20 dark:border-gray-300/30 rounded-lg shadow-lg hover:shadow-sm transition-shadow p-4">
+    <div className="bg-[#F5F3EF] dark:bg-gray-900/30 border border-[#D6D1C9] dark:border-gray-300/30 rounded-lg shadow-md hover:shadow-lg transition-shadow p-4">
       <div className="flex items-center mb-4">
-        <div className="p-2 rounded-full bg-gray-50 dark:bg-gray-800 mr-4">
+        <div className="p-2 rounded-full bg-[#EDEAE4] dark:bg-gray-800 mr-4 border border-[#D6D1C9] dark:border-transparent">
           {icon}
         </div>
         <h3 className="text-lg font-light">{title}</h3>
@@ -417,7 +417,7 @@ const RepoCard: React.FC<{
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="block backdrop-blur-xl bg-gray-200 dark:bg-gray-900/30 border border-white/20 dark:border-gray-300/30 rounded-lg shadow-lg hover:shadow-sm transition-shadow group p-3"
+    className="block bg-[#F5F3EF] dark:bg-gray-900/30 border border-[#D6D1C9] dark:border-gray-300/30 rounded-lg shadow-md hover:shadow-lg transition-shadow group p-3"
   >
     <div className="flex justify-between items-start mb-3">
       <h3 className="text-lg font-light truncate">{name}</h3>
@@ -425,7 +425,7 @@ const RepoCard: React.FC<{
     </div>
 
     {language && (
-      <span className="inline-block px-2 py-1 text-xs font-light rounded-full bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 mb-3">
+      <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-[#EDEAE4] dark:bg-gray-800 text-[#4A4540] dark:text-gray-300 mb-3 border border-[#D6D1C9] dark:border-transparent">
         {language}
       </span>
     )}

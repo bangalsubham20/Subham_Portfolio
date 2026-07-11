@@ -260,7 +260,7 @@ export default function Gallery() {
   };
 
   return (
-    <div ref={component} className="bg-gradient min-h-screen font-sans relative overflow-hidden">
+    <div ref={component} className="bg-gradient min-h-screen font-sans relative overflow-hidden bg-[#F5F3EF] dark:bg-black">
       <BackgroundElements />
 
       {/* Custom Cursor */}

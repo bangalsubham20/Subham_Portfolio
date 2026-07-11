@@ -114,7 +114,7 @@ const Timeline: React.FC = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="font-sans py-24 sm:py-32">
+        <section ref={sectionRef} className="font-sans py-24 sm:py-32 bg-[#F5F3EF] dark:bg-transparent">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
                 {/* --- Header Section --- */}
@@ -122,7 +122,7 @@ const Timeline: React.FC = () => {
                     <h2 className="text-4xl md:text-6xl font-light tracking-tight text-gray-900 dark:text-white">
                         Changelog
                     </h2>
-                    <p className="mt-6 text-lg font-light text-gray-600 dark:text-gray-400">
+                    <p className="mt-6 text-lg font-light text-[#6B6560] dark:text-gray-400">
                         A chronological journey through my development career.
                     </p>
                 </div>
@@ -132,7 +132,7 @@ const Timeline: React.FC = () => {
                     {/* The central timeline spine */}
                     <div
                         ref={timelineLineRef}
-                        className="absolute left-4 lg:left-1/2 w-0.5 h-full bg-gray-700 dark:bg-gray-500 origin-top"
+                        className="absolute left-4 lg:left-1/2 w-0.5 h-full bg-[#C9C4BC] dark:bg-gray-500 origin-top"
                     ></div>
 
                     <div className="space-y-12 lg:space-y-0">
@@ -153,12 +153,12 @@ const Timeline: React.FC = () => {
                                     `}>
                                         <p className="text-5xl font-light text-red-700 dark:text-red-700">{item.year}</p>
                                         <h3 className="mt-4 text-2xl font-light tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
-                                        <p className="mt-3 text-lg font-light text-gray-600 dark:text-gray-400">{item.description}</p>
+                                        <p className="mt-3 text-lg font-light text-[#5A5550] dark:text-gray-400">{item.description}</p>
                                         <div className={`mt-4 flex flex-wrap gap-2 ${isLeft ? 'lg:justify-end' : 'lg:justify-start'}`}>
                                             {item.tags.map(tag => (
                                                 <span
                                                     key={tag}
-                                                    className="text-sm font-light tracking-wide text-gray-500 px-3 py-1 border border-gray-200 dark:border-gray-800"
+                                                    className="text-sm font-light tracking-wide text-[#5A5550] dark:text-gray-500 px-3 py-1 border border-[#D6D1C9] dark:border-gray-800"
                                                 >
                                                     {tag}
                                                 </span>
@@ -172,7 +172,7 @@ const Timeline: React.FC = () => {
                                         ${isLeft ? 'lg:col-start-6' : 'lg:col-start-7'}
                                         flex justify-start lg:justify-center items-center h-full
                                     `}>
-                                        <div className="absolute left-4 lg:left-1/2 top-1 -translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-black border-2 border-gray-800 dark:border-gray-500"></div>
+                                        <div className="absolute left-4 lg:left-1/2 top-1 -translate-x-1/2 w-4 h-4 rounded-full bg-[#F5F3EF] dark:bg-black border-2 border-[#8A8580] dark:border-gray-500"></div>
                                     </div>
                                 </div>
                             );

@@ -38,13 +38,13 @@ const Contact: React.FC = () => {
     }, []);
 
     return (
-        <section id="contact" ref={containerRef} className="py-24 px-6 bg-gray-50 dark:bg-black border-t border-gray-200 dark:border-zinc-900">
+        <section id="contact" ref={containerRef} className="py-24 px-6 border-t border-[#D6D1C9] dark:border-zinc-900 bg-[#F5F3EF] dark:bg-transparent">
             <div className="container mx-auto max-w-4xl text-center">
                 <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter mb-8">
                     LET'S <span className="text-red-600">CONNECT</span>
                 </h2>
 
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-16 contact-item">
+                <p className="text-xl text-[#5A5550] dark:text-gray-400 max-w-2xl mx-auto mb-16 contact-item">
                     I'm currently looking for new opportunities as a Backend & DevOps Engineer.
                     Whether you have a question or just want to say hi, I'll try my best to get back to you!
                 </p>
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-8 justify-center items-center contact-item">
                     <a
                         href="mailto:bangalsubham@gmail.com"
-                        className="group flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg hover:scale-105 transition-transform"
+                        className="group flex items-center gap-3 px-8 py-4 bg-[#1a1a1a] dark:bg-white text-white dark:text-black rounded-full font-medium text-lg hover:scale-105 hover:bg-gray-800 dark:hover:bg-gray-200 transition-all"
                     >
                         <Mail size={20} />
                         <span>Say Hello</span>
@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
                             href="https://www.linkedin.com/in/bangalsubham20/"
                             target="_blank"
                             rel="noreferrer"
-                            className="p-4 rounded-full border border-gray-300 dark:border-zinc-700 hover:border-red-500 hover:text-red-500 transition-colors"
+                            className="p-4 rounded-full border border-[#C9C4BC] dark:border-zinc-700 text-[#4A4540] dark:text-gray-300 hover:border-red-500 hover:text-red-500 transition-colors"
                         >
                             <Linkedin size={24} />
                         </a>
@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
                             href="https://github.com/bangalsubham20"
                             target="_blank"
                             rel="noreferrer"
-                            className="p-4 rounded-full border border-gray-300 dark:border-zinc-700 hover:border-red-500 hover:text-red-500 transition-colors"
+                            className="p-4 rounded-full border border-[#C9C4BC] dark:border-zinc-700 text-[#4A4540] dark:text-gray-300 hover:border-red-500 hover:text-red-500 transition-colors"
                         >
                             <Github size={24} />
                         </a>

@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { FiDownload } from 'react-icons/fi';
 import DarkVeil from './DarkVeil';
+import { useTheme } from '../context/ThemeContext';
 
 const Hero: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);
@@ -12,6 +13,7 @@ const Hero: React.FC = () => {
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     const rolesRef = useRef<HTMLUListElement>(null);
     const headingRef = useRef<HTMLHeadingElement>(null);
+    const { isDark } = useTheme();
 
     useEffect(() => {
         // Manual SplitText implementation
@@ -104,6 +106,9 @@ const Hero: React.FC = () => {
                 id="home"
                 ref={heroRef}
                 className="relative min-h-screen flex flex-col justify-center items-center md:items-start px-3 xs:px-4 sm:px-6 py-20 sm:py-8 md:py-24 max-w-7xl mx-auto pb-0 overflow-hidden w-full"
+                style={{
+                    background: isDark ? '' : 'linear-gradient(145deg, #F5F3EF 0%, #EDE8E0 60%, #F0EDE7 100%)'
+                }}
             >
                 {/* ...existing code... */}
                 <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start md:relative overflow-hidden">
@@ -124,23 +129,23 @@ const Hero: React.FC = () => {
                         </div>
 
                         <div ref={subtitleRef} className="mb-6 sm:mb-10 ml-0 sm:ml-5 w-full overflow-hidden max-w-full">
-                            <p className="text-sm xs:text-base sm:text-xl md:text-2xl uppercase tracking-wider text-gray-600 dark:text-gray-400 text-center md:text-left w-full max-w-full">
+                            <p className="text-sm xs:text-base sm:text-xl md:text-2xl uppercase tracking-wider text-[#6B6560] dark:text-gray-400 text-center md:text-left w-full max-w-full font-light">
                                 Backend & DevOps Specialist
                             </p>
                         </div>
 
                         <div className="ml-0 sm:ml-5 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 text-xs sm:text-sm font-light tracking-wide w-full text-center md:text-left overflow-hidden max-w-full">
                             <div>
-                                <p className="text-gray-500 dark:text-gray-500 mb-1 sm:mb-2">CURRENTLY</p>
+                                <p className="text-[#9A958F] dark:text-gray-500 mb-1 sm:mb-2 font-medium tracking-widest text-[10px] sm:text-xs uppercase">CURRENTLY</p>
                                 <p>Freelancer at Upwork</p>
                             </div>
                             <div>
-                                <p className="text-gray-500 dark:text-gray-500 mb-1 sm:mb-2">LOCATION</p>
+                                <p className="text-[#9A958F] dark:text-gray-500 mb-1 sm:mb-2 font-medium tracking-widest text-[10px] sm:text-xs uppercase">LOCATION</p>
                                 <p>Bankura, India</p>
                             </div>
                             <div>
-                                <p className="text-gray-500 dark:text-gray-500 mb-1 sm:mb-2">AVAILABILITY</p>
-                                <p className="text-green-700 dark:text-green-600">Open for projects</p>
+                                <p className="text-[#9A958F] dark:text-gray-500 mb-1 sm:mb-2 font-medium tracking-widest text-[10px] sm:text-xs uppercase">AVAILABILITY</p>
+                                <p className="text-green-700 dark:text-green-600 font-medium">Open for projects</p>
                             </div>
                         </div>
                     </div>
@@ -150,7 +155,7 @@ const Hero: React.FC = () => {
                         <div className="text-center md:text-left w-full md:w-auto overflow-hidden">
                             <ul
                                 ref={rolesRef}
-                                className="text-sm xs:text-base sm:text-xl md:text-2xl uppercase tracking-wider text-gray-950 dark:text-gray-400 space-y-1 sm:space-y-2 text-center md:text-left"
+                                className="text-sm xs:text-base sm:text-xl md:text-2xl uppercase tracking-wider text-[#2D2A26] dark:text-gray-400 space-y-1 sm:space-y-2 text-center md:text-left font-light"
                             >
                                 <li>Backend Developer</li>
                                 <li>DevOps Engineer</li>
@@ -165,8 +170,8 @@ const Hero: React.FC = () => {
                     ref={scrollIndicatorRef}
                     className="relative flex-col items-center mt-12 sm:mt-0 bottom-0 sm:bottom-[130px] left-0 sm:left-[-70px] w-full sm:w-auto hidden sm:flex"
                 >
-                    <div className="w-px h-10 sm:h-16 bg-gray-400 dark:bg-gray-600 mb-2 sm:mb-4"></div>
-                    <p className="text-[10px] sm:text-xs font-light tracking-widest transform -rotate-90 sm:origin-center origin-top-left">
+                    <div className="w-px h-10 sm:h-16 bg-[#B5AFA8] dark:bg-gray-600 mb-2 sm:mb-4"></div>
+                    <p className="text-[10px] sm:text-xs font-medium tracking-widest transform -rotate-90 sm:origin-center origin-top-left text-[#9A958F] dark:text-gray-400">
                         SCROLL
                     </p>
                 </div>
@@ -176,7 +181,7 @@ const Hero: React.FC = () => {
                     <a
                         href="/previews/Subham_Bangal_Resume_Devops.pdf"
                         download
-                        className="inline-flex items-center space-x-2 px-6 py-2 border border-gray-300 dark:border-gray-700 bg-transparent text-gray-900 dark:text-gray-100 font-light tracking-wide rounded-lg hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 transition-all duration-300 shadow-sm"
+                        className="inline-flex items-center space-x-2 px-6 py-2 border border-[#B5AFA8] dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-100 font-medium tracking-wide rounded-lg hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-gray-900 transition-all duration-300 shadow-sm"
                     >
                         <FiDownload size={18} />
                         <span>Download Resume</span>

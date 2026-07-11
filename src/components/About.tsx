@@ -119,7 +119,7 @@ const About: React.FC = () => {
             id="about"
             onMouseMove={!isTouch ? handleMouseMove : undefined}
             onMouseLeave={!isTouch ? handleMouseLeave : undefined}
-            className="relative font-sans py-24 px-6 md:px-12 md:py-32 overflow-hidden cursor-none bg-white dark:bg-black"
+            className="relative font-sans py-24 px-6 md:px-12 md:py-32 overflow-hidden cursor-none bg-[#EDEAE4] dark:bg-black"
         >
             {/* Grid Background */}
             <div className="absolute inset-0 z-0 pointer-events-none hidden md:block opacity-20 dark:opacity-10">
@@ -148,31 +148,31 @@ const About: React.FC = () => {
                     (002) — About Me
                 </span>
 
-                <div className="space-y-8 text-2xl md:text-5xl font-extralight leading-snug md:leading-tight text-gray-900 dark:text-white mix-blend-difference">
+                <div className="space-y-8 text-2xl md:text-5xl font-extralight leading-snug md:leading-tight text-gray-900 dark:text-white">
                     <p>I'm a <span className="font-normal text-red-600">Backend & DevOps Engineer</span> who thrives on building scalable and robust digital infrastructure.</p>
                     <p>From <span className="font-normal">Java Spring Boot APIs</span> to <span className="font-normal">Cloud Infrastructures</span>, I craft performant systems that solve complex real-world problems.</p>
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-gray-300 dark:border-zinc-800">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-[#C9C4BC] dark:border-zinc-800">
                     <div>
                         <div className="text-4xl md:text-5xl font-light">2+</div>
-                        <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Years Experience</div>
+                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Years Experience</div>
                     </div>
                     <div>
                         <div className="text-4xl md:text-5xl font-light">12+</div>
-                        <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Open Projects</div>
+                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Open Projects</div>
                     </div>
                     <div>
                         <div className="text-4xl md:text-5xl font-light">AWS</div>
-                        <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Certified</div>
+                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Certified</div>
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                             <div className="text-4xl md:text-5xl font-light">Active</div>
                         </div>
-                        <div className="text-sm text-gray-500 mt-2 uppercase tracking-widest">Status</div>
+                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Status</div>
                     </div>
                 </div>
             </div>

@@ -68,7 +68,7 @@ const Navigation: React.FC = () => {
         <>
             <nav
                 ref={navRef}
-                className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-gray-50/90 dark:bg-black/30 backdrop-blur-sm border-b border-gray-200/10 dark:border-gray-800/20"
+                className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-[#F5F3EF]/95 dark:bg-black/30 backdrop-blur-md border-b border-[#D6D1C9] dark:border-gray-800/20 shadow-[0_1px_12px_rgba(0,0,0,0.06)] dark:shadow-none"
                 style={{ cursor: 'none' }}
             >
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -86,15 +86,15 @@ const Navigation: React.FC = () => {
                             <TransitionLink
                                 key={item.name}
                                 to={item.path}
-                                className={`text-sm font-light tracking-wide transition-colors duration-300 relative group ${location.pathname === item.path
-                                    ? 'text-gray-900 dark:text-gray-100'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                                className={`text-sm font-medium tracking-wide transition-colors duration-300 relative group ${location.pathname === item.path
+                                    ? 'text-gray-950 dark:text-gray-100'
+                                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-950 dark:hover:text-gray-100'
                                     }`}
                                 style={{ cursor: 'none' }}
                             >
                                 {item.name}
-                                <span className={`absolute -bottom-1 left-0 h-px transition-all duration-300 ${location.pathname === item.path
-                                    ? 'w-full bg-gray-900 dark:bg-gray-100'
+                                <span className={`absolute -bottom-1 left-0 h-[1.5px] transition-all duration-300 ${location.pathname === item.path
+                                    ? 'w-full bg-gray-950 dark:bg-gray-100'
                                     : 'w-0 bg-red-500 dark:bg-red-900 group-hover:w-full'
                                     }`}></span>
                             </TransitionLink>
@@ -107,7 +107,7 @@ const Navigation: React.FC = () => {
                             download
                             data-magnetic
                             data-cursor-text="CV"
-                            className="hidden md:flex items-center space-x-2 px-4 py-2 text-sm font-light tracking-wide border border-gray-300 dark:border-gray-700 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 rounded-full transition-all duration-300"
+                            className="hidden md:flex items-center space-x-2 px-4 py-2 text-sm font-medium tracking-wide border border-gray-400 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-gray-900 rounded-full transition-all duration-300"
                             style={{ cursor: 'none' }}
                         >
                             <FiDownload size={16} />
@@ -116,7 +116,7 @@ const Navigation: React.FC = () => {
 
                         <button
                             onClick={toggleMute}
-                            className="hidden md:flex p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full transition-colors duration-300"
+                            className="hidden md:flex p-2 text-gray-600 dark:text-gray-400 hover:bg-[#E5E1D9] dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 rounded-full transition-colors duration-300"
                             aria-label="Toggle music"
                             style={{ cursor: 'none' }}
                         >
@@ -125,7 +125,7 @@ const Navigation: React.FC = () => {
 
                         <button
                             onClick={toggleTheme}
-                            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full transition-colors duration-300"
+                            className="p-2 text-gray-600 dark:text-gray-400 hover:bg-[#E5E1D9] dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 rounded-full transition-colors duration-300"
                             aria-label="Toggle theme"
                             style={{ cursor: 'none' }}
                         >
@@ -135,7 +135,7 @@ const Navigation: React.FC = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full transition-colors duration-300"
+                            className="md:hidden p-2 text-gray-600 dark:text-gray-400 hover:bg-[#E5E1D9] dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 rounded-full transition-colors duration-300"
                             aria-label="Toggle menu"
                             style={{ cursor: 'none' }}
                         >
@@ -148,7 +148,7 @@ const Navigation: React.FC = () => {
             {/* Mobile Menu */}
             <div
                 ref={mobileMenuRef}
-                className="fixed inset-0 z-40 bg-gray-50 dark:bg-gray-950 opacity-0 invisible md:hidden"
+                className="fixed inset-0 z-40 bg-[#F5F3EF] dark:bg-gray-950 opacity-0 invisible md:hidden"
                 style={{ cursor: 'none' }}
             >
                 <div className="flex flex-col items-center justify-center h-full space-y-8">

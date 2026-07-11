@@ -312,7 +312,7 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-32 pb-16 overflow-hidden">
+    <div className="min-h-screen pt-32 pb-16 overflow-hidden bg-[#F5F3EF] dark:bg-transparent">
       <section
         ref={sectionRef}
         className="px-8 max-w-7xl mx-auto"
@@ -321,7 +321,7 @@ const Projects: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-light tracking-tight mb-8">
             All Projects
           </h1>
-          <p className="text-lg font-light text-gray-600 dark:text-gray-400 max-w-2xl">
+          <p className="text-lg font-light text-[#5A5550] dark:text-gray-400 max-w-2xl">
             A comprehensive collection of my work, showcasing various technologies and problem-solving approaches
           </p>
         </div>
@@ -330,13 +330,13 @@ const Projects: React.FC = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group border-t border-gray-200 dark:border-gray-800 pt-12 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-500"
+              className="group border-t border-[#C9C4BC] dark:border-gray-800 pt-12 hover:border-[#8A8580] dark:hover:border-gray-600 transition-colors duration-500"
               data-cursor="-opaque"
             >
               <div className="grid lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-2">
                   <span
-                    className="project-number text-6xl font-light text-gray-300 dark:text-gray-700 group-hover:text-gray-500 dark:group-hover:text-gray-500 transition-colors duration-500"
+                    className="project-number text-6xl font-light text-[#D6D1C9] dark:text-gray-700 group-hover:text-[#8A8580] dark:group-hover:text-gray-500 transition-colors duration-500"
                   >
                     {project.number}
                   </span>
@@ -347,7 +347,7 @@ const Projects: React.FC = () => {
                     ref={el => imageRefs.current[index] = el}
                     src={project.image}
                     alt={project.title}
-                    className="w-full aspect-[4/3] object-cover border border-gray-200 dark:border-gray-800 group-hover:border-gray-400 dark:group-hover:border-gray-600 transition-all duration-300"
+                    className="w-full aspect-[4/3] object-cover border border-[#D6D1C9] dark:border-gray-800 group-hover:border-[#8A8580] dark:group-hover:border-gray-600 transition-all duration-300"
                     data-cursor="-opaque"
                   />
                 </div>
@@ -366,10 +366,10 @@ const Projects: React.FC = () => {
                       </span>
                     </div>
                     <div className="project-description">
-                      <p className="text-lg font-light leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                      <p className="text-lg font-light leading-relaxed text-[#2D2A26] dark:text-gray-300 mb-4">
                         {project.description}
                       </p>
-                      <p className="text-sm font-light leading-relaxed text-gray-600 dark:text-gray-400">
+                      <p className="text-sm font-light leading-relaxed text-[#5A5550] dark:text-gray-400">
                         {project.longDescription}
                       </p>
                     </div>
@@ -384,7 +384,7 @@ const Projects: React.FC = () => {
                         {project.tech.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="tech-tag text-sm font-light tracking-wide text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-800 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                            className="tech-tag text-sm font-light tracking-wide text-[#4A4540] dark:text-gray-400 border border-[#C9C4BC] dark:border-gray-800 px-3 py-1 hover:bg-[#E5E1D9] dark:hover:bg-gray-800 transition-all duration-300"
                             data-cursor="-opaque"
                           >
                             {tech}
@@ -434,7 +434,7 @@ const Projects: React.FC = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="github-button inline-flex items-center justify-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 transition-all duration-300"
+                      className="github-button inline-flex items-center justify-center space-x-2 px-4 py-2 border border-[#B5AFA8] dark:border-gray-700 text-[#2D2A26] dark:text-gray-300 hover:bg-[#1a1a1a] dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-[#1a1a1a] transition-all duration-300"
                       data-cursor="-opaque"
                     >
                       <FiGithub size={16} />
@@ -446,7 +446,7 @@ const Projects: React.FC = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="live-button inline-flex items-center justify-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 transition-all duration-300"
+                        className="live-button inline-flex items-center justify-center space-x-2 px-4 py-2 border border-[#B5AFA8] dark:border-gray-700 text-[#2D2A26] dark:text-gray-300 hover:bg-[#1a1a1a] dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-[#1a1a1a] transition-all duration-300"
                         data-cursor="-opaque"
                       >
                         <FiExternalLink size={16} />

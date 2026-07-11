@@ -41,7 +41,7 @@ const Collaborate: React.FC = () => {
     <section
       id="collaborate"
       ref={sectionRef}
-      className="py-32 px-6 bg-gray-100 dark:bg-gray-900"
+      className="py-32 px-6 bg-gradient-to-br from-[#EDEAE4] to-[#E5E0D8] dark:from-gray-900 dark:to-gray-900"
     >
       <div className="max-w-4xl mx-auto text-center">
         <h2
@@ -51,7 +51,7 @@ const Collaborate: React.FC = () => {
           Let's Collaborate
         </h2>
 
-        <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+        <p className="text-xl text-[#5A5550] dark:text-gray-400 mb-12 max-w-2xl mx-auto">
           I'm available for freelance projects and always excited to work on
           innovative solutions. Let's build something amazing together.
         </p>

@@ -33,9 +33,9 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className="px-8 pb-12 pt-0"
+      className="px-8 pb-12 pt-0 bg-[#EDEAE4] dark:bg-transparent"
     >
-      <div className="max-w-full mx-auto border-t-2 border-gray-200 dark:border-gray-800 pt-12">
+      <div className="max-w-full mx-auto border-t-2 border-[#C9C4BC] dark:border-gray-800 pt-12">
         <div ref={contentRef} className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
 
           {/* Brand */}
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
           <div className="flex space-x-6">
             <a
               href="mailto:bangalsubham@gmail.com"
-              className="text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
+              className="text-[#6B6560] dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
               aria-label="Email"
             >
               <FiMail size={20} />
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               href="https://www.linkedin.com/in/bangalsubham20/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
+              className="text-[#6B6560] dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
               aria-label="LinkedIn"
             >
               <FiLinkedin size={20} />
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
               href="https://github.com/bangalsubham20"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
+              className="text-[#6B6560] dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
               aria-label="GitHub"
             >
               <FiGithub size={20} />
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-sm font-light text-gray-500 dark:text-gray-500">
+          <div className="text-sm font-light text-[#9A958F] dark:text-gray-500">
             &copy; {currentYear} Subham Bangal. All rights reserved.
           </div>
         </div>

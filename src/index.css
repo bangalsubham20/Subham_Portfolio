@@ -4,8 +4,19 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-black dark:text-gray-100 transition-colors duration-300;
+    background-color: #F5F3EF;
+    color: #1a1a1a;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+  .dark body {
+    background-color: #000;
+    color: #f3f4f6;
+  }
+}
+
+/* Light mode section alternation helpers */
+.light-section-alt {
+  background-color: #EDEAE4;
 }
 
 /* Lenis Smooth Scroll */
@@ -32,13 +43,42 @@ html.lenis body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-transparent;
+  background: #F5F3EF;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-700;
+  background: #c8c3bb;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a89f95;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Light mode noise texture overlay for premium feel */
+body:not(.dark) .noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }

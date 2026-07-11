@@ -108,13 +108,13 @@ const Collaborate: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-16">
+    <div className="min-h-screen pt-32 pb-16 bg-[#F5F3EF] dark:bg-transparent">
       <section ref={sectionRef} className="px-8 max-w-7xl mx-auto">
         <div className="mb-16">
           <h1 className="text-4xl md:text-6xl font-light tracking-tight mb-8 text-gray-900 dark:text-white">
             Let's Collaborate
           </h1>
-          <p className="text-lg font-light text-gray-600 dark:text-gray-400 max-w-2xl">
+          <p className="text-lg font-light text-[#5A5550] dark:text-gray-400 max-w-2xl">
             Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
           </p>
         </div>
@@ -138,7 +138,7 @@ const Collaborate: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Personal Information */}
               <div className="space-y-6">
-                <h3 className="text-lg font-light tracking-tight border-b border-gray-200 dark:border-gray-800 pb-2 text-gray-900 dark:text-white">
+                <h3 className="text-lg font-light tracking-tight border-b border-[#C9C4BC] dark:border-gray-800 pb-2 text-gray-900 dark:text-white">
                   Contact Information
                 </h3>
 
@@ -154,7 +154,7 @@ const Collaborate: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     />
                   </div>
@@ -169,7 +169,7 @@ const Collaborate: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     />
                   </div>
@@ -186,7 +186,7 @@ const Collaborate: React.FC = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     />
                   </div>
@@ -200,7 +200,7 @@ const Collaborate: React.FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     />
                   </div>
@@ -209,7 +209,7 @@ const Collaborate: React.FC = () => {
 
               {/* Project Information */}
               <div className="space-y-6">
-                <h3 className="text-lg font-light tracking-tight border-b border-gray-200 dark:border-gray-800 pb-2 text-gray-900 dark:text-white">
+                <h3 className="text-lg font-light tracking-tight border-b border-[#C9C4BC] dark:border-gray-800 pb-2 text-gray-900 dark:text-white">
                   Project Information
                 </h3>
 
@@ -224,7 +224,7 @@ const Collaborate: React.FC = () => {
                       value={formData.projectType}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     >
                       <option value="">Select type</option>
@@ -243,7 +243,7 @@ const Collaborate: React.FC = () => {
                       value={formData.budget}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     >
                       <option value="">Select budget</option>
@@ -262,7 +262,7 @@ const Collaborate: React.FC = () => {
                       value={formData.timeline}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none text-[#1a1a1a] dark:text-white"
                       data-cursor="pointer"
                     >
                       <option value="">Select timeline</option>
@@ -284,7 +284,7 @@ const Collaborate: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none resize-none text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none resize-none text-[#1a1a1a] dark:text-white"
                     placeholder="Describe your project, goals, and what you're looking to achieve..."
                     data-cursor="pointer"
                   />
@@ -300,7 +300,7 @@ const Collaborate: React.FC = () => {
                     value={formData.requirements}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-800 bg-transparent focus:border-gray-400 dark:focus:border-gray-600 transition-colors duration-300 outline-none resize-none text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-[#D6D1C9] dark:border-gray-800 bg-[#EDEAE4] dark:bg-transparent focus:border-[#8A8580] dark:focus:border-gray-600 transition-colors duration-300 outline-none resize-none text-[#1a1a1a] dark:text-white"
                     placeholder="Any specific technologies, integrations, or technical requirements..."
                     data-cursor="pointer"
                   />
@@ -368,7 +368,7 @@ const Collaborate: React.FC = () => {
               </div>
             </div>
 
-            <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+            <div className="border-t border-[#C9C4BC] dark:border-gray-800 pt-8">
               <h3 className="text-lg font-light tracking-tight mb-4 text-gray-900 dark:text-white">Quick Contact</h3>
               <div className="space-y-3">
                 <a
@@ -386,7 +386,7 @@ const Collaborate: React.FC = () => {
               </div>
             </div>
 
-            <div className="border border-gray-200 dark:border-gray-800 p-6">
+            <div className="border border-[#C9C4BC] dark:border-gray-800 p-6 bg-[#EDEAE4] dark:bg-transparent">
               <h3 className="font-light text-lg mb-4 text-gray-900 dark:text-white">Response Time</h3>
               <p className="font-light text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                 I typically respond to project inquiries within 24 hours. For urgent projects,
