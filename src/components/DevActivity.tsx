@@ -96,9 +96,11 @@ const DevActivity: React.FC = () => {
       try {
         const userRes = await fetch('https://api.github.com/users/bangalsubham20');
         const reposRes = await fetch('https://api.github.com/users/bangalsubham20/repos?per_page=100&sort=updated');
+        const contribRes = await fetch('https://github-contributions-api.deno.dev/bangalsubham20.json');
 
         const userData = await userRes.json();
         const reposData = await reposRes.json();
+        const contribData = await contribRes.json();
 
         const languages: GitHubData['languages'] = {};
         let totalSize = 0;
@@ -122,19 +124,14 @@ const DevActivity: React.FC = () => {
           prev.stargazers_count > current.stargazers_count ? prev : current
         );
 
-        const totalCommits = reposData.length * 12;
-        const totalContributions = reposData.length * 8;
-
-        const mostActiveRepo = {
-          name: reposData[0]?.name || 'No repos',
-          commits: Math.floor(Math.random() * 50) + 20,
-          url: reposData[0]?.html_url || '#',
-        };
-
-        const commitActivity = {
-          lastWeek: Math.floor(Math.random() * 20) + 5,
-          lastMonth: Math.floor(Math.random() * 80) + 20,
-        };
+        let realTotalContributions = 0;
+        if (contribData && contribData.contributions) {
+          contribData.contributions.forEach((week: any[]) => {
+            week.forEach((day: any) => {
+              realTotalContributions += day.contributionCount;
+            });
+          });
+        }
 
         setData({
           user: {
@@ -145,16 +142,16 @@ const DevActivity: React.FC = () => {
           languages,
           stats: {
             totalStars: reposData.reduce((acc: number, repo: any) => acc + repo.stargazers_count, 0),
-            totalCommits,
-            totalContributions,
+            totalCommits: 0, // unused now
+            totalContributions: realTotalContributions,
             avgRepoSize: Math.round(totalSize / reposData.length),
             mostStarredRepo: {
               name: mostStarredRepo.name,
               stars: mostStarredRepo.stargazers_count,
               url: mostStarredRepo.html_url,
             },
-            mostActiveRepo,
-            commitActivity,
+            mostActiveRepo: { name: '', commits: 0, url: '' }, // unused
+            commitActivity: { lastWeek: 0, lastMonth: 0 }, // unused
           },
         });
       } catch (error) {
@@ -279,15 +276,15 @@ const DevActivity: React.FC = () => {
           />
           <MetricCard
             icon={<FiGitCommit className="text-red-600" />}
-            title="Total Commits"
-            value={data.stats.totalCommits}
-            description="Code contributions"
+            title="Yearly Contributions"
+            value={data.stats.totalContributions}
+            description="Over the last year"
           />
           <MetricCard
             icon={<FiGitPullRequest className="text-red-600" />}
-            title="Contributions"
-            value={data.stats.totalContributions}
-            description="Open source impact"
+            title="Followers"
+            value={data.user.followers}
+            description="GitHub Community"
           />
         </div>
 
