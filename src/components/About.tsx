@@ -70,13 +70,13 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
     </div>
 );
 
-/** CursorTrail: Layer 20 - Container div for floating mouse trail elements */
+/** CursorTrail: Layer 30 - Container div for floating mouse trail elements above Layer 20 content */
 interface CursorTrailProps {
     containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const CursorTrail: React.FC<CursorTrailProps> = ({ containerRef }) => (
-    <div ref={containerRef} className="absolute inset-0 z-20 pointer-events-none" />
+    <div ref={containerRef} className="absolute inset-0 z-30 pointer-events-none" />
 );
 
 // ============================================================================
@@ -145,11 +145,8 @@ const About: React.FC = () => {
             {/* Layer 10: Decorative Grid Background */}
             <GridBackground />
 
-            {/* Layer 20: Floating Cursor Trail */}
-            {!isTouchDevice && <CursorTrail containerRef={trailContainerRef} />}
-
-            {/* Layer 30: Main Content Container */}
-            <div ref={contentRef} className="relative z-30 max-w-7xl mx-auto">
+            {/* Layer 20: Main Content Container (Headings, Narrative, Paragraphs) */}
+            <div ref={contentRef} className="relative z-20 max-w-7xl mx-auto">
                 {/* Section Header */}
                 <span className="block text-sm font-bold tracking-[0.2em] text-red-500 mb-12 uppercase">
                     (002) — About Me
@@ -168,8 +165,8 @@ const About: React.FC = () => {
                     </p>
                 </div>
 
-                {/* Layer 40: Statistics Grid */}
-                <div className="relative mt-20 sm:mt-28 md:mt-32 pt-10 sm:pt-14 md:pt-16">
+                {/* Layer 40: Statistics Grid (Interactive Targets) */}
+                <div className="relative z-40 mt-20 sm:mt-28 md:mt-32 pt-10 sm:pt-14 md:pt-16">
                     {/* Gradient Divider Line */}
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-700 to-transparent pointer-events-none" />
 
@@ -187,6 +184,9 @@ const About: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Layer 30: Floating Cursor Trail (Renders ON TOP of Layer 20 Content) */}
+            {!isTouchDevice && <CursorTrail containerRef={trailContainerRef} />}
         </section>
     );
 };

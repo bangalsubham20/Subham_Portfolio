@@ -46,18 +46,18 @@ export const useCursorTrail = <
     const trailContainerRef = useRef<TrailContainerType | null>(null);
     const lastTimeRef = useRef<number>(0);
 
-    /** Creates an HTML image element configured for the trail */
+    /** Creates an HTML image element configured for Layer 30 floating cursor trail */
     const createTrailImage = (x: number, y: number, imageSrc: string): HTMLImageElement => {
         const trailImage = document.createElement('img');
         trailImage.src = imageSrc;
         trailImage.alt = 'Trail';
         trailImage.className =
-            'absolute w-24 h-32 object-cover rounded-lg shadow-xl border border-gray-300 dark:border-zinc-700 pointer-events-none';
+            'absolute w-24 h-32 object-cover rounded-lg shadow-2xl border border-gray-200/50 dark:border-zinc-700/70 pointer-events-none select-none';
         trailImage.style.left = `${x}px`;
         trailImage.style.top = `${y}px`;
         trailImage.style.transform = 'translate(-50%, -50%) scale(0.5)';
         trailImage.style.opacity = '0';
-        trailImage.style.zIndex = '20';
+        trailImage.style.zIndex = '30'; // Layer 30: Renders above Layer 20 Content
         return trailImage;
     };
 
@@ -65,7 +65,7 @@ export const useCursorTrail = <
     const animateTrailImage = (trailImage: HTMLImageElement): void => {
         gsap.timeline({ onComplete: () => trailImage.remove() })
             .to(trailImage, {
-                opacity: 1,
+                opacity: 0.88, // Editorial opacity ensuring content text underneath remains legible
                 scale: 1,
                 rotation: gsap.utils.random(-20, 20),
                 x: gsap.utils.random(-15, 15),
