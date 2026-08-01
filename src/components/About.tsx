@@ -1,209 +1,189 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useIsTouchDevice } from '../hooks/useIsTouchDevice';
+import { useCursorTrail } from '../hooks/useCursorTrail';
+import StatCard from './StatCard';
 
+// Register GSAP Plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const images = Array.from({ length: 10 }, (_, i) => `/images/${i + 1}.png`);
+// ============================================================================
+// CONSTANTS & CONFIGURATION
+// ============================================================================
+const TRAIL_IMAGES = Array.from({ length: 10 }, (_, i) => `/images/${i + 1}.png`);
+const VERTICAL_GRID_LINES_COUNT = 10;
+const HORIZONTAL_GRID_LINES_COUNT = 5;
 
+/** Shared statistics data array */
+const STATS_DATA = [
+    { id: 'experience', value: '2+', label: 'Years Experience' },
+    { id: 'projects', value: '12+', label: 'Open Projects' },
+    { id: 'certification', value: 'AWS', label: 'Certified' },
+    {
+        id: 'status',
+        value: 'Active',
+        label: 'Status',
+        isActiveStatus: true,
+        hoverTextColor: 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400',
+    },
+];
+
+// ============================================================================
+// REUSABLE SUB-COMPONENTS
+// ============================================================================
+
+/** Subtle opacity falloff for depth effect across horizontal lines */
+const HORIZONTAL_OPACITIES = ['opacity-90', 'opacity-70', 'opacity-50', 'opacity-35', 'opacity-20'];
+
+/** GridBackground: Layer 10 - Renders background vertical and horizontal grid lines with gradient masks */
+interface GridBackgroundProps {
+    verticalCount?: number;
+    horizontalCount?: number;
+}
+
+const GridBackground: React.FC<GridBackgroundProps> = ({
+    verticalCount = VERTICAL_GRID_LINES_COUNT,
+    horizontalCount = HORIZONTAL_GRID_LINES_COUNT,
+}) => (
+    <div className="absolute inset-0 z-10 pointer-events-none hidden md:block">
+        {/* Vertical Lines: Fade top -> bottom */}
+        {[...Array(verticalCount)].map((_, index) => (
+            <div
+                key={`v-${index}`}
+                className="grid-line absolute top-0 bottom-0 w-px bg-gradient-to-b from-neutral-400/40 via-neutral-400/15 to-transparent dark:from-neutral-500/35 dark:via-neutral-500/10 dark:to-transparent"
+                style={{ left: `${(index + 1) * 9}%` }}
+            />
+        ))}
+
+        {/* Horizontal Lines: Fade transparent -> center -> transparent with subtle depth falloff */}
+        {[...Array(horizontalCount)].map((_, index) => {
+            const opacityClass = HORIZONTAL_OPACITIES[index] || 'opacity-20';
+            return (
+                <div
+                    key={`h-${index}`}
+                    className={`grid-line absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-neutral-400/30 to-transparent dark:via-neutral-500/25 ${opacityClass}`}
+                    style={{ top: `${(index + 1) * 15}%` }}
+                />
+            );
+        })}
+    </div>
+);
+
+/** CursorTrail: Layer 20 - Container div for floating mouse trail elements */
+interface CursorTrailProps {
+    containerRef: React.RefObject<HTMLDivElement | null>;
+}
+
+const CursorTrail: React.FC<CursorTrailProps> = ({ containerRef }) => (
+    <div ref={containerRef} className="absolute inset-0 z-20 pointer-events-none" />
+);
+
+// ============================================================================
+// MAIN ABOUT COMPONENT
+// ============================================================================
 const About: React.FC = () => {
-    const sectionRef = useRef<HTMLElement | null>(null);
+    // Detect touch-first devices to conditionally disable desktop cursor trail & hover animations
+    const isTouchDevice = useIsTouchDevice();
+
+    // Custom hook encapsulating position-based cursor trail logic & GSAP timeline
+    const { sectionRef, trailContainerRef, handleMouseMove, handleMouseLeave } = useCursorTrail<
+        HTMLElement,
+        HTMLDivElement
+    >({
+        images: TRAIL_IMAGES,
+        isTouchDevice,
+    });
+
     const contentRef = useRef<HTMLDivElement | null>(null);
-    const stackContainerRef = useRef<HTMLDivElement | null>(null);
-    const lastTimeRef = useRef<number>(0);
-    const [isTouch, setIsTouch] = useState<boolean>(false);
 
+    /** GSAP ScrollTrigger Animations for section elements */
     useEffect(() => {
-        const checkTouch = () => {
-            setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
-        };
-        checkTouch();
-        window.addEventListener('resize', checkTouch);
-
-        const ctx = gsap.context(() => {
-            // Animate Grid Lines
-            gsap.from(".grid-line", {
+        const animationContext = gsap.context(() => {
+            // Animate Grid Lines on Scroll
+            gsap.from('.grid-line', {
                 scale: 0,
-                stagger: { from: "center", amount: 0.5 },
+                opacity: 0,
+                stagger: { from: 'center', amount: 0.5 },
                 duration: 1.5,
-                ease: "expo.out",
+                ease: 'expo.out',
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "top 70%",
-                }
+                    start: 'top 70%',
+                },
             });
 
-            // Animate Content
+            // Animate Main Text Content on Scroll
             if (contentRef.current) {
                 gsap.from(contentRef.current.children, {
                     yPercent: 50,
                     opacity: 0,
                     stagger: 0.1,
                     duration: 1.2,
-                    ease: "expo.out",
+                    ease: 'expo.out',
                     scrollTrigger: {
                         trigger: contentRef.current,
-                        start: "top 80%",
-                    }
+                        start: 'top 80%',
+                    },
                 });
             }
         }, sectionRef);
 
         return () => {
-            ctx.revert();
-            window.removeEventListener('resize', checkTouch);
+            animationContext.revert();
         };
-    }, []);
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        const now = Date.now();
-        if (now - lastTimeRef.current < 50) return;
-        lastTimeRef.current = now;
-
-        if (!sectionRef.current || !stackContainerRef.current) return;
-
-        const rect = sectionRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        // Simple cycling 1-10
-        const index = Math.floor(now / 100) % images.length;
-
-        const img = document.createElement('img');
-        img.src = images[index];
-
-        img.alt = `Trail`;
-        img.className = 'absolute w-24 h-32 object-cover rounded-lg shadow-xl border border-gray-300 dark:border-zinc-700 pointer-events-none';
-        img.style.left = `${x}px`;
-        img.style.top = `${y}px`;
-        img.style.transform = `translate(-50%, -50%) scale(0.5)`; // Start small
-        img.style.opacity = '0';
-        img.style.zIndex = '50';
-
-        stackContainerRef.current.appendChild(img);
-
-        gsap.timeline({ onComplete: () => img.remove() })
-            .to(img, {
-                opacity: 1,
-                scale: 1,
-                rotation: gsap.utils.random(-20, 20),
-                x: gsap.utils.random(-15, 15),
-                y: gsap.utils.random(-15, 15),
-                duration: 0.35,
-                ease: "back.out(1.7)",
-            })
-            .to(img, {
-                opacity: 0,
-                scale: 0.75,
-                y: "+=40",
-                rotation: "+=10",
-                duration: 0.6,
-                ease: "power2.in",
-            }, ">0.35");
-    };
-
-    const handleMouseLeave = () => {
-        if (!stackContainerRef.current) return;
-        gsap.to(stackContainerRef.current.children, {
-            opacity: 0,
-            scale: 0.5,
-            duration: 0.3,
-            ease: "power2.in",
-            onComplete: () => {
-                if (stackContainerRef.current) {
-                    stackContainerRef.current.innerHTML = '';
-                }
-            }
-        });
-    };
+    }, [sectionRef]);
 
     return (
         <section
             ref={sectionRef}
             id="about"
-            onMouseMove={!isTouch ? handleMouseMove : undefined}
-            onMouseLeave={!isTouch ? handleMouseLeave : undefined}
-            className="relative font-sans py-24 px-6 md:px-12 md:py-32 overflow-hidden cursor-none bg-[#EDEAE4] dark:bg-black"
+            onMouseMove={!isTouchDevice ? handleMouseMove : undefined}
+            onMouseLeave={!isTouchDevice ? handleMouseLeave : undefined}
+            className="relative z-0 font-sans py-24 px-6 md:px-12 md:py-32 overflow-hidden cursor-none bg-[#EDEAE4] dark:bg-black"
         >
-            {/* Grid Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
-                {[...Array(10)].map((_, i) => (
-                    <div
-                        key={`v-${i}`}
-                        className="grid-line absolute top-0 bottom-0 w-px bg-gradient-to-b from-neutral-400/40 to-transparent dark:from-neutral-600/30 dark:to-transparent"
-                        style={{ left: `${(i + 1) * 9}%` }}
-                    />
-                ))}
-                {[...Array(5)].map((_, i) => (
-                    <div
-                        key={`h-${i}`}
-                        className="grid-line absolute left-0 right-0 h-px bg-gradient-to-r from-neutral-400/40 via-neutral-400/20 to-transparent dark:from-neutral-600/30 dark:via-neutral-600/15 dark:to-transparent"
-                        style={{ top: `${(i + 1) * 15}%` }}
-                    />
-                ))}
-            </div>
+            {/* Layer 10: Decorative Grid Background */}
+            <GridBackground />
 
-            {/* Trail Container */}
-            {!isTouch && <div ref={stackContainerRef} className="absolute inset-0 z-[40] pointer-events-none" />}
+            {/* Layer 20: Floating Cursor Trail */}
+            {!isTouchDevice && <CursorTrail containerRef={trailContainerRef} />}
 
-            {/* Content */}
-            <div ref={contentRef} className="relative z-50 max-w-7xl mx-auto">
+            {/* Layer 30: Main Content Container */}
+            <div ref={contentRef} className="relative z-30 max-w-7xl mx-auto">
+                {/* Section Header */}
                 <span className="block text-sm font-bold tracking-[0.2em] text-red-500 mb-12 uppercase">
                     (002) — About Me
                 </span>
 
+                {/* Narrative Paragraphs */}
                 <div className="space-y-8 text-2xl md:text-5xl font-extralight leading-snug md:leading-tight text-gray-900 dark:text-white">
-                    <p>I'm a <span className="font-normal text-red-600">Backend & DevOps Engineer</span> who thrives on building scalable and robust digital infrastructure.</p>
-                    <p>From <span className="font-normal">Java Spring Boot APIs</span> to <span className="font-normal">Cloud Infrastructures</span>, I craft performant systems that solve complex real-world problems.</p>
+                    <p>
+                        I'm a <span className="font-normal text-red-600">Backend & DevOps Engineer</span> who thrives
+                        on building scalable and robust digital infrastructure.
+                    </p>
+                    <p>
+                        From <span className="font-normal">Java Spring Boot APIs</span> to{' '}
+                        <span className="font-normal">Cloud Infrastructures</span>, I craft performant systems that
+                        solve complex real-world problems.
+                    </p>
                 </div>
 
-                {/* Stats */}
-                <div className="relative mt-28 md:mt-32 pt-14 md:pt-16">
+                {/* Layer 40: Statistics Grid */}
+                <div className="relative mt-20 sm:mt-28 md:mt-32 pt-10 sm:pt-14 md:pt-16">
                     {/* Gradient Divider Line */}
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-300 to-transparent dark:via-zinc-700" />
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-700 to-transparent pointer-events-none" />
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16">
-                        <div className="group cursor-default transition-all duration-300">
-                            <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
-                                2+
-                            </h3>
-                            <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
-                                Years Experience
-                            </p>
-                        </div>
-
-                        <div className="group cursor-default transition-all duration-300">
-                            <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
-                                12+
-                            </h3>
-                            <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
-                                Open Projects
-                            </p>
-                        </div>
-
-                        <div className="group cursor-default transition-all duration-300">
-                            <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
-                                AWS
-                            </h3>
-                            <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
-                                Certified
-                            </p>
-                        </div>
-
-                        <div className="group cursor-default transition-all duration-300">
-                            <div className="flex items-center gap-3">
-                                <span className="relative flex h-3 w-3">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                                </span>
-                                <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                                    Active
-                                </h3>
-                            </div>
-                            <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
-                                Status
-                            </p>
-                        </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 sm:gap-x-10 lg:gap-x-16 gap-y-10 sm:gap-y-12">
+                        {STATS_DATA.map((stat) => (
+                            <StatCard
+                                key={stat.id}
+                                value={stat.value}
+                                label={stat.label}
+                                isActiveStatus={stat.isActiveStatus}
+                                hoverTextColor={stat.hoverTextColor}
+                                isTouchDevice={isTouchDevice}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
