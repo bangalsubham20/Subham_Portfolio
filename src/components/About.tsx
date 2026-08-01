@@ -84,19 +84,22 @@ const About: React.FC = () => {
 
         gsap.timeline({ onComplete: () => img.remove() })
             .to(img, {
-                opacity: 0.8,
+                opacity: 1,
                 scale: 1,
-                rotation: gsap.utils.random(-15, 15),
-                duration: 0.3,
-                ease: 'back.out(1.7)',
+                rotation: gsap.utils.random(-20, 20),
+                x: gsap.utils.random(-15, 15),
+                y: gsap.utils.random(-15, 15),
+                duration: 0.35,
+                ease: "back.out(1.7)",
             })
             .to(img, {
                 opacity: 0,
-                y: 50, // drop down
-                scale: 0.5,
-                duration: 0.5,
-                ease: 'power2.in',
-            }, ">0.2");
+                scale: 0.75,
+                y: "+=40",
+                rotation: "+=10",
+                duration: 0.6,
+                ease: "power2.in",
+            }, ">0.35");
     };
 
     const handleMouseLeave = () => {
