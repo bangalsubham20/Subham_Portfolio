@@ -123,18 +123,18 @@ const About: React.FC = () => {
             className="relative font-sans py-24 px-6 md:px-12 md:py-32 overflow-hidden cursor-none bg-[#EDEAE4] dark:bg-black"
         >
             {/* Grid Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none hidden md:block opacity-20 dark:opacity-10">
+            <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
                 {[...Array(10)].map((_, i) => (
                     <div
                         key={`v-${i}`}
-                        className="grid-line absolute top-0 bottom-0 w-px bg-gray-400 dark:bg-gray-600"
+                        className="grid-line absolute top-0 bottom-0 w-px bg-gradient-to-b from-neutral-400/40 to-transparent dark:from-neutral-600/30 dark:to-transparent"
                         style={{ left: `${(i + 1) * 9}%` }}
                     />
                 ))}
                 {[...Array(5)].map((_, i) => (
                     <div
                         key={`h-${i}`}
-                        className="grid-line absolute left-0 right-0 h-px bg-gray-400 dark:bg-gray-600"
+                        className="grid-line absolute left-0 right-0 h-px bg-gradient-to-r from-neutral-400/40 via-neutral-400/20 to-transparent dark:from-neutral-600/30 dark:via-neutral-600/15 dark:to-transparent"
                         style={{ top: `${(i + 1) * 15}%` }}
                     />
                 ))}
