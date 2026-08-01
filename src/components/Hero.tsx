@@ -1,9 +1,8 @@
-// src/components/Hero.tsx
-
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { FiDownload } from 'react-icons/fi';
 import DarkVeil from './DarkVeil';
+import ErrorBoundary from './ErrorBoundary';
 import { useTheme } from '../context/ThemeContext';
 
 const Hero: React.FC = () => {
@@ -100,7 +99,9 @@ const Hero: React.FC = () => {
         <>
             {/* --- DarkVeil Fullscreen Background (dark mode only) --- */}
             <div className="absolute inset-0 z-[0] w-screen h-screen m-0 p-0 hidden dark:block">
-                <DarkVeil />
+                <ErrorBoundary>
+                    <DarkVeil />
+                </ErrorBoundary>
             </div>
             <section
                 id="home"

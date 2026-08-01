@@ -120,7 +120,10 @@ const CustomCursor: React.FC = () => {
                     });
                 } else {
                     isMagnetic = false;
-                    gsap.to('[data-magnetic]', { x: 0, y: 0, duration: 0.3, ease: "power2.out" });
+                    const magneticElements = document.querySelectorAll('[data-magnetic]');
+                    if (magneticElements.length > 0) {
+                        gsap.to(magneticElements, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
+                    }
                 }
             };
 
