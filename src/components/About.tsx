@@ -51,7 +51,7 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
         {[...Array(verticalCount)].map((_, index) => (
             <div
                 key={`v-${index}`}
-                className="grid-line absolute top-0 bottom-0 w-px bg-gradient-to-b from-neutral-400/40 via-neutral-400/15 to-transparent dark:from-neutral-500/35 dark:via-neutral-500/10 dark:to-transparent"
+                className="grid-line absolute top-0 bottom-0 w-px bg-gradient-to-b from-neutral-400/40 via-neutral-400/15 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent"
                 style={{ left: `${(index + 1) * 9}%` }}
             />
         ))}
@@ -62,7 +62,7 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
             return (
                 <div
                     key={`h-${index}`}
-                    className={`grid-line absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-neutral-400/30 to-transparent dark:via-neutral-500/25 ${opacityClass}`}
+                    className={`grid-line absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-neutral-400/30 to-transparent dark:via-white/25 ${opacityClass}`}
                     style={{ top: `${(index + 1) * 15}%` }}
                 />
             );
@@ -168,7 +168,7 @@ const About: React.FC = () => {
                 {/* Layer 40: Statistics Grid (Interactive Targets) */}
                 <div className="relative z-40 mt-20 sm:mt-28 md:mt-32 pt-10 sm:pt-14 md:pt-16">
                     {/* Gradient Divider Line */}
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-700 to-transparent pointer-events-none" />
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-300 dark:via-white/40 to-transparent pointer-events-none" />
 
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 sm:gap-x-10 lg:gap-x-16 gap-y-10 sm:gap-y-12">
                         {STATS_DATA.map((stat) => (
