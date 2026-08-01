@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const images = Array.from({ length: 10 }, (_, i) => `/images/${i + 1}.png`);
+
 const About: React.FC = () => {
     const sectionRef = useRef<HTMLElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
@@ -65,11 +67,10 @@ const About: React.FC = () => {
         const y = e.clientY - rect.top;
 
         // Simple cycling 1-10
-        const index = (Math.floor(now / 100) % 10) + 1;
+        const index = Math.floor(now / 100) % images.length;
 
         const img = document.createElement('img');
-        // Random placeholder for visual effect if local images missing
-        img.src = `https://picsum.photos/200/300?random=${index + Date.now()}`;
+        img.src = images[index];
 
         img.alt = `Trail`;
         img.className = 'absolute w-24 h-32 object-cover rounded-lg shadow-xl border border-gray-300 dark:border-zinc-700 pointer-events-none';
