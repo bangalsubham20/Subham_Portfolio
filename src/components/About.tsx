@@ -158,25 +158,47 @@ const About: React.FC = () => {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-[#C9C4BC] dark:border-zinc-800">
-                    <div>
-                        <div className="text-4xl md:text-5xl font-light">2+</div>
-                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Years Experience</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16 mt-24 pt-12 border-t border-zinc-300 dark:border-zinc-800">
+                    <div className="group cursor-default transition-all duration-300">
+                        <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
+                            2+
+                        </h3>
+                        <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
+                            Years Experience
+                        </p>
                     </div>
-                    <div>
-                        <div className="text-4xl md:text-5xl font-light">12+</div>
-                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Open Projects</div>
+
+                    <div className="group cursor-default transition-all duration-300">
+                        <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
+                            12+
+                        </h3>
+                        <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
+                            Open Projects
+                        </p>
                     </div>
-                    <div>
-                        <div className="text-4xl md:text-5xl font-light">AWS</div>
-                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Certified</div>
+
+                    <div className="group cursor-default transition-all duration-300">
+                        <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
+                            AWS
+                        </h3>
+                        <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
+                            Certified
+                        </p>
                     </div>
-                    <div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                            <div className="text-4xl md:text-5xl font-light">Active</div>
+
+                    <div className="group cursor-default transition-all duration-300">
+                        <div className="flex items-center gap-3">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                            </span>
+                            <h3 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                Active
+                            </h3>
                         </div>
-                        <div className="text-sm text-[#7A7570] mt-2 uppercase tracking-widest">Status</div>
+                        <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400 font-medium">
+                            Status
+                        </p>
                     </div>
                 </div>
             </div>
